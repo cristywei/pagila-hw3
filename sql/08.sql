@@ -18,3 +18,8 @@
  *    Ensure that you are not counting a customer that has rented a movie twice as 2 separate customers renting the movie.
  *    I did this by using the SELECT DISTINCT clause.
  */
+SELECT f1.title
+FROM film f1
+JOIN invetory USING (film_id)
+JOIN rental USING (inventory_id)
+JOIN customer USING (customer_id)

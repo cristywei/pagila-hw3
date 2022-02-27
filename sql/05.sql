@@ -6,3 +6,9 @@
  * HINT:
  * This can be solved with a self join on the film_actor table.
  */
+SELECT title
+FROM film
+JOIN film_actor USING (film_id)
+JOIN film_actor fa2 ON (fa2.actor_id = film_actor.actor_id)
+--WHERE actor_id 
+ORDER BY title;
