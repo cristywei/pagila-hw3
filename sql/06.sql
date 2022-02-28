@@ -6,7 +6,6 @@
  * That is, list all actors that have appeared in a film with 'RUSSELL BACALL'.
  * Do not list 'RUSSELL BACALL', since he has a Bacall Number of 0.
  */
-
 SELECT DISTINCT a1.first_name || ' ' || a1.last_name AS "Actor Name"
 FROM actor a1
 JOIN film_actor fa1 ON (a1.actor_id = fa1.actor_id)

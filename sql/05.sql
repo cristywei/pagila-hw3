@@ -6,9 +6,19 @@
  * HINT:
  * This can be solved with a self join on the film_actor table.
  */
+WITH american_circus AS (
+    SELECT actor_id
+    FROM film
+    JOIN film_actor USING (film_id)
+    WHERE title = 'AMERICAN CIRCUS')
+
 SELECT title
 FROM film
-JOIN film_actor USING (film_id)
-JOIN film_actor fa2 ON (fa2.actor_id = film_actor.actor_id)
---WHERE actor_id 
+JOIN film_actor f1 USING (film_id)
+JOIN film_actor f2 ON f2.actor_id != f1.actor_id AND f2.film_id = film.film_id 
+WHERE f1.actor_id IN (
+    SELECT actor_id FROM american_circus)
+AND f2.actor_id IN (
+    SELECT actor_id FROM american_circus)
+GROUP BY title
 ORDER BY title;
